@@ -120,14 +120,15 @@ class DataStore {
         if (typeof db !== 'undefined') {
             // Listen for Menu Changes
             db.collection("settings").doc("menu").onSnapshot((doc) => {
-                if (doc.exists) {
+                if (doc.exists && storedVersion === CURRENT_VERSION) {
                     const cloudMenu = doc.data().items;
                     localStorage.setItem('cafe_menu', JSON.stringify(cloudMenu));
-                    // Global event to notify UI to refresh
                     window.dispatchEvent(new Event('menuUpdated'));
                 } else {
-                    // Initial setup: upload default menu if empty
-                    db.collection("settings").doc("menu").set({ items: defaultMenu });
+                    // Sürüm değiştiyse veya veri yoksa: defaultMenu'yu Firebase'e bas
+                    db.collection("settings").doc("menu").set({ items: defaultMenu }).then(() => {
+                        console.log("Bulut veritabanı yeni kategorilerle güncellendi.");
+                    });
                 }
             });
         }
