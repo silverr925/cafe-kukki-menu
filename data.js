@@ -23,22 +23,26 @@ if (typeof firebase !== 'undefined') {
 
 // Default Data for Initial Setup
 const defaultMenu = [
-    // İÇECEKLER
-    { id: 'p1', name: 'Espresso', category: 'İçecekler', price: 65, stock: 100 },
-    { id: 'p2', name: 'Americano', category: 'İçecekler', price: 75, stock: 100 },
-    { id: 'p3', name: 'Latte', category: 'İçecekler', price: 95, stock: 100 },
-    { id: 'p4', name: 'Cappuccino', category: 'İçecekler', price: 95, stock: 100 },
-    { id: 'p5', name: 'Flat White', category: 'İçecekler', price: 105, stock: 100 },
-    { id: 'p6', name: 'Türk Kahvesi', category: 'İçecekler', price: 70, stock: 100 },
-    { id: 'p7', name: 'Filtre Kahve', category: 'İçecekler', price: 80, stock: 100 },
-    { id: 'p8', name: 'Iced Americano', category: 'İçecekler', price: 85, stock: 100 },
-    { id: 'p9', name: 'Iced Latte', category: 'İçecekler', price: 110, stock: 100 },
-    { id: 'p10', name: 'Limonata', category: 'İçecekler', price: 90, stock: 100 },
-    { id: 'p11', name: 'Taze Portakal Suyu', category: 'İçecekler', price: 120, stock: 100 },
-    { id: 'p12', name: 'Çay', category: 'İçecekler', price: 30, stock: 100 },
-    { id: 'p13', name: 'Bitki Çayı', category: 'İçecekler', price: 75, stock: 100 },
-    { id: 'p14', name: 'Su (Cam)', category: 'İçecekler', price: 25, stock: 100 },
-    { id: 'p15', name: 'Maden Suyu', category: 'İçecekler', price: 40, stock: 100 },
+    // KAHVELER
+    { id: 'p1', name: 'Espresso', category: 'Kahveler', price: 65, stock: 100 },
+    { id: 'p2', name: 'Americano', category: 'Kahveler', price: 75, stock: 100 },
+    { id: 'p3', name: 'Latte', category: 'Kahveler', price: 95, stock: 100 },
+    { id: 'p4', name: 'Cappuccino', category: 'Kahveler', price: 95, stock: 100 },
+    { id: 'p5', name: 'Flat White', category: 'Kahveler', price: 105, stock: 100 },
+    { id: 'p6', name: 'Türk Kahvesi', category: 'Kahveler', price: 70, stock: 100 },
+    { id: 'p7', name: 'Filtre Kahve', category: 'Kahveler', price: 80, stock: 100 },
+    { id: 'p8', name: 'Iced Americano', category: 'Kahveler', price: 85, stock: 100 },
+    { id: 'p9', name: 'Iced Latte', category: 'Kahveler', price: 110, stock: 100 },
+
+    // SOĞUK İÇECEKLER
+    { id: 'p10', name: 'Limonata', category: 'Soğuk İçecekler', price: 90, stock: 100 },
+    { id: 'p11', name: 'Taze Portakal Suyu', category: 'Soğuk İçecekler', price: 120, stock: 100 },
+    { id: 'p15', name: 'Maden Suyu', category: 'Soğuk İçecekler', price: 40, stock: 100 },
+    { id: 'p14', name: 'Su (Cam)', category: 'Soğuk İçecekler', price: 25, stock: 100 },
+
+    // ÇAYLAR
+    { id: 'p12', name: 'Çay', category: 'Çaylar', price: 30, stock: 100 },
+    { id: 'p13', name: 'Bitki Çayı', category: 'Çaylar', price: 75, stock: 100 },
 
     // YİYECEKLER
     { id: 'p16', name: 'Karışık Tost', category: 'Yiyecekler', price: 140, stock: 50 },
@@ -94,7 +98,7 @@ const ADMIN_PIN = '1542';
 // DataStore Wrapper for Local + Cloud
 class DataStore {
     static init() {
-        const CURRENT_VERSION = '1.5';
+        const CURRENT_VERSION = '1.6';
         const storedVersion = localStorage.getItem('cafe_pos_version');
 
         if (!localStorage.getItem('cafe_menu') || storedVersion !== CURRENT_VERSION) {

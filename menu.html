@@ -30,8 +30,8 @@
             line-height: 1.6;
             overflow-x: hidden;
             background-image: 
-                radial-gradient(circle at 15% 50%, rgba(212, 175, 55, 0.03), transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(255, 255, 255, 0.02), transparent 25%);
+                radial-gradient(circle at 0% 0%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
             background-attachment: fixed;
         }
 
@@ -152,29 +152,29 @@
         }
 
         .menu-item {
-            background: var(--glass);
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
             border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 20px;
+            border-radius: 20px;
+            padding: 24px;
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            transition: all 0.3s ease;
+            align-items: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
-            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
 
         .menu-item:hover {
-            transform: translateY(-3px);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(212, 175, 55, 0.3);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transform: scale(1.02) translateY(-5px);
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
         }
 
         .item-info { flex: 1; padding-right: 15px; }
         
         .item-name {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: 500;
             margin-bottom: 6px;
             color: var(--text);
@@ -189,14 +189,15 @@
         }
 
         .item-price {
-            font-weight: 600;
+            font-weight: 700;
             color: var(--accent);
-            font-size: 1.25rem;
+            font-size: 1.4rem;
             white-space: nowrap;
-            background: rgba(212, 175, 55, 0.1);
-            padding: 6px 12px;
-            border-radius: 12px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            background: rgba(0, 0, 0, 0.3);
+            padding: 8px 16px;
+            border-radius: 14px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: inset 0 0 10px rgba(212, 175, 55, 0.1);
         }
 
         .sold-out-badge {
@@ -287,7 +288,9 @@
 
             // Get unique categories
             const categories = [...new Set(menu.map(item => item.category))];
-            const categoryOrder = ['Pizzalar', 'İçecekler', 'Yiyecekler', 'Tatlılar', 'Diğer'];
+            
+            // USER ORDER: Kahveler, Çaylar, Soğuk İçecekler, Yiyecekler, Pizzalar, Tatlılar
+            const categoryOrder = ['Kahveler', 'Çaylar', 'Soğuk İçecekler', 'Yiyecekler', 'Pizzalar', 'Tatlılar', 'Diğer'];
             
             const sortedCategories = categories.sort((a, b) => {
                 const idxA = categoryOrder.indexOf(a);
